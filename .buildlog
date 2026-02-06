@@ -4,3 +4,4 @@
 2026-02-04T13:26:04 bootstrap package skeleton
 2026-02-05T19:08:52 extract result type
 2026-02-06T21:46:49 introduce typed error hierarchy
+2026-02-06T23:16:11 handle empty input edge case
