@@ -3,3 +3,4 @@
 2026-02-04T09:02:29 harden validation paths
 2026-02-04T13:26:04 bootstrap package skeleton
 2026-02-05T19:08:52 extract result type
+2026-02-06T21:46:49 introduce typed error hierarchy
