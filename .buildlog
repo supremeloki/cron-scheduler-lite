@@ -7,3 +7,4 @@
 2026-02-06T23:16:11 handle empty input edge case
 2026-02-07T21:33:36 implement core engine
 2026-02-08T13:29:58 wire internal state machine
+2026-02-08T20:09:19 add dataclass contracts
