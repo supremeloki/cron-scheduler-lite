@@ -8,3 +8,29 @@ from enum import Enum
 
 class SchedulerError(Exception):
     pass
+
+
+class JobNotFoundError(SchedulerError):
+    def __init__(self, job_id: str) -> None:
+        super().__init__(f"job not found: {job_id!r}")
+
+
+class InvalidIntervalError(SchedulerError):
+    pass
+
+
+@dataclass(frozen=True)
+class JobRun:
+    job_id: str
+    scheduled_at: float
+    started_at: float
+    finished_at: float
+    success: bool
+    error_summary: str | None = None
+
+    @property
+    def duration(self) -> float:
+        return round(self.finished_at - self.started_at, 4)
+
+    @property
+    def lateness(self) -> float:
