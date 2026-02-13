@@ -37,3 +37,5 @@ class JobRun:
         return round(max(0.0, self.started_at - self.scheduled_at), 4)
 
 
+@dataclass
+class Job:
