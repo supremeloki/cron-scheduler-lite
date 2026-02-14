@@ -39,3 +39,5 @@ class JobRun:
 
 @dataclass
 class Job:
+    job_id: str
+    action: Callable[[], None]
