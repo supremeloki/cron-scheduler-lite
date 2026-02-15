@@ -41,3 +41,6 @@ class JobRun:
 class Job:
     job_id: str
     action: Callable[[], None]
+    interval_seconds: float
+    max_runs: int | None = None
+    enabled: bool = True
