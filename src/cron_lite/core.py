@@ -46,3 +46,6 @@ class Job:
     enabled: bool = True
     runs_completed: int = 0
     next_run_at: float = 0.0
+    last_error: str | None = field(default=None, repr=False)
+
+    def __post_init__(self) -> None:
