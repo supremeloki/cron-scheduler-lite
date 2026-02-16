@@ -44,3 +44,5 @@ class Job:
     interval_seconds: float
     max_runs: int | None = None
     enabled: bool = True
+    runs_completed: int = 0
+    next_run_at: float = 0.0
