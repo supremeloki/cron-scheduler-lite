@@ -49,3 +49,5 @@ class Job:
     last_error: str | None = field(default=None, repr=False)
 
     def __post_init__(self) -> None:
+        if self.interval_seconds <= 0:
+            raise InvalidIntervalError("interval must be > 0")
