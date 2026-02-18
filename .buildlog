@@ -20,3 +20,4 @@
 2026-02-16T10:43:40 wire internal state machine pt2
 2026-02-16T18:03:05 handle empty input edge case pt2
 2026-02-17T22:11:54 wire internal state machine pt2
+2026-02-18T14:28:42 introduce typed error hierarchy pt2

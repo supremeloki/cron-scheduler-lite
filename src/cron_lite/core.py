@@ -51,3 +51,5 @@ class Job:
     def __post_init__(self) -> None:
         if self.interval_seconds <= 0:
             raise InvalidIntervalError("interval must be > 0")
+        if self.max_runs is not None and self.max_runs < 1:
+            raise SchedulerError("max_runs must be >= 1")
