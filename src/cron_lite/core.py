@@ -53,3 +53,6 @@ class Job:
             raise InvalidIntervalError("interval must be > 0")
         if self.max_runs is not None and self.max_runs < 1:
             raise SchedulerError("max_runs must be >= 1")
+
+    @property
+    def is_exhausted(self) -> bool:
