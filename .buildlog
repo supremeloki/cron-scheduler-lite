@@ -22,3 +22,4 @@
 2026-02-17T22:11:54 wire internal state machine pt2
 2026-02-18T14:28:42 introduce typed error hierarchy pt2
 2026-02-19T21:23:29 add dataclass contracts pt2
+2026-02-20T20:07:12 extract result type pt2

@@ -56,3 +56,5 @@ class Job:
 
     @property
     def is_exhausted(self) -> bool:
+        return self.max_runs is not None and self.runs_completed >= self.max_runs
+
