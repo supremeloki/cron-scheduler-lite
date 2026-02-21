@@ -58,3 +58,6 @@ class Job:
     def is_exhausted(self) -> bool:
         return self.max_runs is not None and self.runs_completed >= self.max_runs
 
+    def is_due(self, at_time: float | None = None) -> bool:
+        moment = at_time if at_time is not None else time.monotonic()
+        return (self.enabled and not self.is_exhausted

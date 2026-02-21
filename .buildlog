@@ -23,3 +23,4 @@
 2026-02-18T14:28:42 introduce typed error hierarchy pt2
 2026-02-19T21:23:29 add dataclass contracts pt2
 2026-02-20T20:07:12 extract result type pt2
+2026-02-21T09:02:54 expose metrics hooks
