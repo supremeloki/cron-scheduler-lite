@@ -61,3 +61,5 @@ class Job:
     def is_due(self, at_time: float | None = None) -> bool:
         moment = at_time if at_time is not None else time.monotonic()
         return (self.enabled and not self.is_exhausted
+                and moment >= self.next_run_at)
+
