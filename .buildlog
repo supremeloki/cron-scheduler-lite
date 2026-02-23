@@ -25,3 +25,4 @@
 2026-02-20T20:07:12 extract result type pt2
 2026-02-21T09:02:54 expose metrics hooks
 2026-02-22T14:31:58 implement cache layer
+2026-02-23T12:14:35 wire async handlers

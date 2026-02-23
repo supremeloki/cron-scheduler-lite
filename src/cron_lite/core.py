@@ -63,3 +63,5 @@ class Job:
         return (self.enabled and not self.is_exhausted
                 and moment >= self.next_run_at)
 
+    def reschedule(self, now: float) -> float:
+        self.next_run_at = now + self.interval_seconds
