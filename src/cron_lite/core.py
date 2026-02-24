@@ -65,3 +65,6 @@ class Job:
 
     def reschedule(self, now: float) -> float:
         self.next_run_at = now + self.interval_seconds
+        return self.next_run_at
+
+
