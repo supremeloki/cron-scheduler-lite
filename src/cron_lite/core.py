@@ -68,3 +68,5 @@ class Job:
         return self.next_run_at
 
 
+class CronScheduler:
+    def __init__(self, clock: Callable[[], float] | None = None,
