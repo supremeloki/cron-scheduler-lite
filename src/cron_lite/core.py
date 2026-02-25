@@ -70,3 +70,6 @@ class Job:
 
 class CronScheduler:
     def __init__(self, clock: Callable[[], float] | None = None,
+                 sleep: Callable[[float], None] | None = None) -> None:
+        self._clock = clock or time.monotonic
+        self._sleep = sleep or time.sleep
