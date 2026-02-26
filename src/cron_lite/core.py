@@ -75,3 +75,5 @@ class CronScheduler:
         self._sleep = sleep or time.sleep
         self._jobs: dict[str, Job] = {}
         self._runs: list[JobRun] = []
+
+    @property
