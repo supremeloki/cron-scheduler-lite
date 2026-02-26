@@ -73,3 +73,5 @@ class CronScheduler:
                  sleep: Callable[[float], None] | None = None) -> None:
         self._clock = clock or time.monotonic
         self._sleep = sleep or time.sleep
+        self._jobs: dict[str, Job] = {}
+        self._runs: list[JobRun] = []
