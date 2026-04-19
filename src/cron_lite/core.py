@@ -77,3 +77,6 @@ class CronScheduler:
         self._runs: list[JobRun] = []
 
     @property
+    def now(self) -> float:
+        return self._clock()
+
