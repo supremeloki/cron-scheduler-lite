@@ -80,3 +80,5 @@ class CronScheduler:
     def now(self) -> float:
         return self._clock()
 
+    def register(self, job: Job, *, start_immediately: bool = True) -> "CronScheduler":
+        if job.job_id in self._jobs:
