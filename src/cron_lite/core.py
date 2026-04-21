@@ -82,3 +82,6 @@ class CronScheduler:
 
     def register(self, job: Job, *, start_immediately: bool = True) -> "CronScheduler":
         if job.job_id in self._jobs:
+            raise SchedulerError(f"job already registered: {job.job_id!r}")
+        job.next_run_at = self.now if start_immediately \
+            else self.now + job.interval_seconds
