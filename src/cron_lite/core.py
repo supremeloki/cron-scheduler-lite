@@ -85,3 +85,5 @@ class CronScheduler:
             raise SchedulerError(f"job already registered: {job.job_id!r}")
         job.next_run_at = self.now if start_immediately \
             else self.now + job.interval_seconds
+        self._jobs[job.job_id] = job
+        return self
