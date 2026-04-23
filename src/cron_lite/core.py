@@ -87,3 +87,6 @@ class CronScheduler:
             else self.now + job.interval_seconds
         self._jobs[job.job_id] = job
         return self
+
+    def every(self, interval_seconds: float, job_id: str | None = None,
+              max_runs: int | None = None) -> Callable[[Callable[[], None]], Job]:
