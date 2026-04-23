@@ -90,3 +90,5 @@ class CronScheduler:
 
     def every(self, interval_seconds: float, job_id: str | None = None,
               max_runs: int | None = None) -> Callable[[Callable[[], None]], Job]:
+        def decorator(action: Callable[[], None]) -> Job:
+            identifier = job_id or action.__name__
