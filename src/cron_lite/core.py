@@ -92,3 +92,5 @@ class CronScheduler:
               max_runs: int | None = None) -> Callable[[Callable[[], None]], Job]:
         def decorator(action: Callable[[], None]) -> Job:
             identifier = job_id or action.__name__
+            job = Job(job_id=identifier, action=action,
+                      interval_seconds=interval_seconds, max_runs=max_runs)
