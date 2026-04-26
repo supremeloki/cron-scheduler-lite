@@ -94,3 +94,6 @@ class CronScheduler:
             identifier = job_id or action.__name__
             job = Job(job_id=identifier, action=action,
                       interval_seconds=interval_seconds, max_runs=max_runs)
+            self.register(job)
+            return job
+        return decorator
