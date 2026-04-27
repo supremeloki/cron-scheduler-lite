@@ -97,3 +97,5 @@ class CronScheduler:
             self.register(job)
             return job
         return decorator
+
+    def unregister(self, job_id: str) -> bool:
