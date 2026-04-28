@@ -98,3 +98,5 @@ def test_scheduler_continues_after_failure(clock):
     calls = {"ok": 0}
 
     def flaky() -> None:
+        if calls["ok"] == 0 and not hasattr(flaky, "_failed"):
+            flaky._failed = True
