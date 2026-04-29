@@ -100,3 +100,6 @@ def test_scheduler_continues_after_failure(clock):
     def flaky() -> None:
         if calls["ok"] == 0 and not hasattr(flaky, "_failed"):
             flaky._failed = True
+            raise RuntimeError("first time fails")
+        calls["ok"] += 1
+
