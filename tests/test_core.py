@@ -103,3 +103,5 @@ def test_scheduler_continues_after_failure(clock):
             raise RuntimeError("first time fails")
         calls["ok"] += 1
 
+    scheduler = CronScheduler(clock=clock)
+    scheduler.register(Job(job_id="flaky", action=flaky, interval_seconds=1))
