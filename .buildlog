@@ -44,3 +44,4 @@
 2026-04-28T22:36:41 expose metrics hooks pt2
 2026-04-29T14:26:31 support config overrides pt2
 2026-04-30T21:19:22 add cli entrypoint pt2
+2026-05-01T23:06:10 wire async handlers pt2
