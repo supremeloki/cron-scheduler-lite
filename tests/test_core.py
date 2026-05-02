@@ -107,3 +107,6 @@ def test_scheduler_continues_after_failure(clock):
     scheduler.register(Job(job_id="flaky", action=flaky, interval_seconds=1))
     clock.advance(1)
     scheduler.run_pending()
+    clock.advance(1)
+    scheduler.run_pending()
+    assert calls["ok"] == 1
