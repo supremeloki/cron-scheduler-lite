@@ -46,3 +46,4 @@
 2026-04-30T21:19:22 add cli entrypoint pt2
 2026-05-01T23:06:10 wire async handlers pt2
 2026-05-02T20:40:26 fix flaky ordering in tests
+2026-05-03T11:36:12 guard against missing header row

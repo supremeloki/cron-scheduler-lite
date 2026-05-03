@@ -110,3 +110,5 @@ def test_scheduler_continues_after_failure(clock):
     clock.advance(1)
     scheduler.run_pending()
     assert calls["ok"] == 1
+
+
