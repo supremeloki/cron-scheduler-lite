@@ -112,3 +112,5 @@ def test_scheduler_continues_after_failure(clock):
     assert calls["ok"] == 1
 
 
+def test_unregister_stops_execution(clock):
+    scheduler = CronScheduler(clock=clock)
