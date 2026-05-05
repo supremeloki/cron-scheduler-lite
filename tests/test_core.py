@@ -114,3 +114,6 @@ def test_scheduler_continues_after_failure(clock):
 
 def test_unregister_stops_execution(clock):
     scheduler = CronScheduler(clock=clock)
+    counter = {"n": 0}
+    scheduler.register(Job(job_id="temp", action=lambda: counter.__setitem__(
+        "n", counter["n"] + 1), interval_seconds=1))
