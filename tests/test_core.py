@@ -119,3 +119,5 @@ def test_unregister_stops_execution(clock):
         "n", counter["n"] + 1), interval_seconds=1))
     assert scheduler.unregister("temp") is True
     clock.advance(10)
+    scheduler.run_pending()
+    assert counter["n"] == 0
