@@ -124,3 +124,5 @@ def test_unregister_stops_execution(clock):
     assert scheduler.unregister("temp") is False
 
 
+def test_get_missing_job_raises(clock):
+    with pytest.raises(JobNotFoundError):
