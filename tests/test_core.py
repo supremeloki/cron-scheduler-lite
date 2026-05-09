@@ -128,3 +128,6 @@ def test_get_missing_job_raises(clock):
     with pytest.raises(JobNotFoundError):
         CronScheduler(clock=clock).get_job("ghost")
 
+
+def test_every_decorator_registers(clock):
+    scheduler = CronScheduler(clock=clock)
