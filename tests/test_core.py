@@ -131,3 +131,5 @@ def test_get_missing_job_raises(clock):
 
 def test_every_decorator_registers(clock):
     scheduler = CronScheduler(clock=clock)
+
+    @scheduler.every(interval_seconds=3, max_runs=1)
