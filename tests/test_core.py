@@ -135,3 +135,6 @@ def test_every_decorator_registers(clock):
     @scheduler.every(interval_seconds=3, max_runs=1)
     def heartbeat():
         pass
+
+    assert "heartbeat" in scheduler.job_ids
+    clock.advance(3)

@@ -57,3 +57,4 @@
 2026-05-09T19:57:47 expand unit coverage pt2
 2026-05-10T17:25:36 expand unit coverage pt2
 2026-05-11T12:08:10 test grouping edge cases pt2
+2026-05-11T22:53:32 fix off-by-one in chunker pt2
