@@ -133,3 +133,5 @@ def test_every_decorator_registers(clock):
     scheduler = CronScheduler(clock=clock)
 
     @scheduler.every(interval_seconds=3, max_runs=1)
+    def heartbeat():
+        pass
