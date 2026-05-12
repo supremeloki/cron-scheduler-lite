@@ -138,3 +138,5 @@ def test_every_decorator_registers(clock):
 
     assert "heartbeat" in scheduler.job_ids
     clock.advance(3)
+    runs = scheduler.run_pending()
+    assert runs[0].job_id == "heartbeat"
