@@ -142,3 +142,6 @@ def test_every_decorator_registers(clock):
     assert runs[0].job_id == "heartbeat"
 
 
+def test_run_history_filtering(clock):
+    scheduler = CronScheduler(clock=clock)
+    scheduler.register(Job(job_id="a", action=lambda: None, interval_seconds=1))
