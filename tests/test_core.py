@@ -147,3 +147,5 @@ def test_run_history_filtering(clock):
     scheduler.register(Job(job_id="a", action=lambda: None, interval_seconds=1))
     scheduler.register(Job(job_id="b", action=lambda: None, interval_seconds=2))
     clock.advance(4)
+    scheduler.run_pending()
+    only_a = scheduler.run_history("a")
