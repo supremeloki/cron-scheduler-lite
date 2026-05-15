@@ -149,3 +149,6 @@ def test_run_history_filtering(clock):
     clock.advance(4)
     scheduler.run_pending()
     only_a = scheduler.run_history("a")
+    assert all(r.job_id == "a" for r in only_a)
+    assert len(scheduler.run_history()) >= len(only_a)
+
