@@ -152,3 +152,5 @@ def test_run_history_filtering(clock):
     assert all(r.job_id == "a" for r in only_a)
     assert len(scheduler.run_history()) >= len(only_a)
 
+
+def test_summary_reports_state(clock):
