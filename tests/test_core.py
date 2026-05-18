@@ -156,3 +156,6 @@ def test_run_history_filtering(clock):
 def test_summary_reports_state(clock):
     scheduler = CronScheduler(clock=clock)
     scheduler.register(Job(job_id="sum", action=lambda: None,
+                           interval_seconds=1, max_runs=1))
+    clock.advance(1)
+    scheduler.run_pending()
