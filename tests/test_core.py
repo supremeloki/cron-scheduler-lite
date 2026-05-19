@@ -159,3 +159,5 @@ def test_summary_reports_state(clock):
                            interval_seconds=1, max_runs=1))
     clock.advance(1)
     scheduler.run_pending()
+    summary = scheduler.summary()["sum"]
+    assert summary["runs"] == 1
