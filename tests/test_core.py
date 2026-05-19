@@ -161,3 +161,5 @@ def test_summary_reports_state(clock):
     scheduler.run_pending()
     summary = scheduler.summary()["sum"]
     assert summary["runs"] == 1
+    assert summary["exhausted"] is True
+
