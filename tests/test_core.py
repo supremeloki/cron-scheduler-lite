@@ -163,3 +163,6 @@ def test_summary_reports_state(clock):
     assert summary["runs"] == 1
     assert summary["exhausted"] is True
 
+
+def test_lateness_measured(clock):
+    scheduler = CronScheduler(clock=clock)
