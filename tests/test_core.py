@@ -166,3 +166,5 @@ def test_summary_reports_state(clock):
 
 def test_lateness_measured(clock):
     scheduler = CronScheduler(clock=clock)
+    scheduler.register(Job(job_id="late", action=lambda: None, interval_seconds=5))
+    clock.advance(12)
