@@ -168,3 +168,5 @@ def test_lateness_measured(clock):
     scheduler = CronScheduler(clock=clock)
     scheduler.register(Job(job_id="late", action=lambda: None, interval_seconds=5))
     clock.advance(12)
+    record = scheduler.run_pending()[0]
+    assert record.lateness >= 7.0
