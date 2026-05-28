@@ -99,3 +99,80 @@ class CronScheduler:
         return decorator
 
     def unregister(self, job_id: str) -> bool:
+        removed = self._jobs.pop(job_id, None)
+        return removed is not None
+
+    def get_job(self, job_id: str) -> Job:
+        job = self._jobs.get(job_id)
+        if job is None:
+            raise JobNotFoundError(job_id)
+        return job
+
+    @property
+    def job_ids(self) -> tuple[str, ...]:
+        return tuple(sorted(self._jobs))
+
+    def due_jobs(self) -> list[Job]:
+        moment = self.now
+        return [job for job in sorted(self._jobs.values(),
+                                      key=lambda j: j.next_run_at)
+                if job.is_due(moment)]
+
+    def run_pending(self) -> list[JobRun]:
+        executed: list[JobRun] = []
+        for job in self.due_jobs():
+            executed.append(self.execute(job))
+        return executed
+
+    def execute(self, job: Job) -> JobRun:
+        scheduled = job.next_run_at
+        started = self._clock()
+        try:
+            job.action()
+            success, error = True, None
+        except Exception as exc:
+            success, error = False, f"{type(exc).__name__}: {exc}"
+            job.last_error = error
+        finished = self._clock()
+        job.runs_completed += 1
+        record = JobRun(
+            job_id=job.job_id,
+            scheduled_at=scheduled,
+            started_at=started,
+            finished_at=finished,
+            success=success,
+            error_summary=error,
+        )
+        self._runs.append(record)
+        if not job.is_exhausted:
+            job.reschedule(finished)
+        return record
+
+    def run_forever(self, poll_interval: float = 1.0,
+                    stop_condition: Callable[[], bool] | None = None) -> None:
+        while not (stop_condition and stop_condition()):
+            pending = self.run_pending()
+            if not pending:
+                self._sleep(poll_interval)
+
+    def run_history(self, job_id: str | None = None) -> tuple[JobRun, ...]:
+        if job_id is None:
+            return tuple(self._runs)
+        return tuple(run for run in self._runs if run.job_id == job_id)
+
+    def summary(self) -> dict[str, dict]:
+        return {
+            job_id: {
+                "runs": len(self.run_history(job_id)),
+                "failures": sum(1 for r in self.run_history(job_id) if not r.success),
+                "enabled": job.enabled,
+                "exhausted": job.is_exhausted,
+                "next_run_at": job.next_run_at,
+            }
+            for job_id, job in sorted(self._jobs.items())
+        }
+
+
+def collect_results(scheduler: CronScheduler, cycles: int) -> Iterable[JobRun]:
+    for _ in range(cycles):
+        yield from scheduler.run_pending()
